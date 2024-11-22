@@ -1,0 +1,29 @@
+"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack serve",
+    "build": "webpack --mode production"
+},
+
+the code above is included as field in the package-json file.
+
+each item in the script object corresponds to a script that is ran is its corresponding value
+
+READ THIS!!!!!!!!  To understand how the script portion of package.json works.
+ex: npm run test -> executes -> "echo \"Error: no test specified\" && exit 1",
+ex: npm run start (run is optional, start is special in that way) -> executes -> webpack serve
+ex: npm run test -> executes -> "echo \"Error: no test specified\" && webpack --mode production
+
+
+VITE INFORMATION
+after you migrate to vite, you're going to notice that a lot of the configuration in the vite.config.js abstracts away much of the old means of configuration
+found in webpack.config.js. We'll talk more about this in the paragraph below but for now lets also highlight how the scripting for running the server found 
+in package.json changes too. now there is no (npm run start) commmand, it isreplaced with (npm run dev) which triggers the (vite) command. before it was (npm run start) 
+, (run is optional) triggering the webpack serve command.
+
+HOW VITE ABSTRACTS OR SIMPLIFIES THE CONFIGURATION OF WEBPACK
+there is a bunch of aspects about webpacks configuration that is greatly simplified with vites style of configuration
+1. no need to include loaders for certain file types, supported natively by vite
+2. simplified code specification to include plugins
+3. automatic server and hot reload setup
+4. entry points are assumed to start at the root. no need to specify path. you require an explictly named file named index.html though
+5. output file specification is greatly simplified. similar to number 2.
